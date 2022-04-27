@@ -6,7 +6,6 @@ package main
 // #cgo CFLAGS: -O3 -I/usr/include/mysql -fno-omit-frame-pointer
 import "C"
 import (
-	"encoding/json"
 	"log"
 	"os"
 	"unsafe"
@@ -84,11 +83,9 @@ func _lambda_sync(initid *C.UDF_INIT, args *C.UDF_ARGS, result *C.char, length *
 		return nil
 	}
 
-	j, _ := json.Marshal(out.Payload)
-
-	*length = uint64(len(j))
+	*length = uint64(len(out.Payload))
 	*isNull = 0
-	return C.CString(string(j))
+	return C.CString(string(out.Payload))
 }
 
 //export lambda_async_init
