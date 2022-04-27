@@ -42,6 +42,19 @@ The payload for the invoked Lambda function, in JSON format.
 
 ---
 
+## Docker
+
+There is a Dockerfile included that when will generate `mysql_lambda.so` for you with Ubuntu 20.04. Compiling on Ubuntu on 20.10 or higher causes the extension not to work in older versions of Linux due to incompatible versions of glibc.
+
+```shell
+git clone https://github.com/StirlingMarketingGroup/mysql-lambda.git
+cd mysql-lambda
+docker build -o . .
+sudo cp mysql_lambda.so /usr/lib/mysql/plugin/mysql_lambda.so # replace plugin dir here if needed
+```
+
+Continue below to see the MySQL commands needed to make the functions work in MySQL.
+
 ## Dependencies
 
 You will need Golang, which you can get from here https://golang.org/doc/install.
