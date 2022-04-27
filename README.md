@@ -99,7 +99,7 @@ USE `sterling`$$
 CREATE FUNCTION `lambda_sync` (`$arn` varchar (2048), `$payload` json)
 RETURNS json
 BEGIN
-RETURN cast(`_lambda_sync`(`$arn`,`$payload`)as json);
+RETURN cast(convert(`_lambda_sync`(`$arn`,`$payload`)using utf8mb4)as json);
 END$$
 
 DELIMITER ;
