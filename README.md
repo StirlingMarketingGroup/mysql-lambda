@@ -49,7 +49,7 @@ There is a Dockerfile included that when will generate `mysql_lambda.so` for you
 ```shell
 git clone https://github.com/StirlingMarketingGroup/mysql-lambda.git
 cd mysql-lambda
-docker build -o . .
+DOCKER_BUILDKIT=1 docker build -o . .
 sudo cp mysql_lambda.so /usr/lib/mysql/plugin/mysql_lambda.so # replace plugin dir here if needed
 ```
 
